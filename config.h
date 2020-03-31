@@ -5,14 +5,13 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Source Code Pro:pixelsize=14:antialias=true:autohint=true";
 /* Spare fonts */
-static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
-};
+//static char *font2[] = { "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", };
+static char *font2[] = { "Material Icons:pixelsize=12:antialias=true:autohint=true" };
+/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", };*/
 
-static int borderpx = 2;
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -89,7 +88,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 1;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -120,6 +119,7 @@ static const char *colorname[] = {
 //	"#555555",
 //	"black",
 
+	/* Normal theme! */
 	/* 8 normal colors */
 	[0] = "#000000", /* black   */
 	[1] = "#ff5555", /* red     */
@@ -144,6 +144,31 @@ static const char *colorname[] = {
 	[256] = "#282a36", /* background */
 	[257] = "#f8f8f2", /* foreground */
 
+	/* Winter theme! */
+	/* 8 normal colors */
+//	[0] = "#000000", /* black   */
+//	[1] = "#ff5555", /* red     */
+//	[2] = "#2f9148", /* green   */
+//	[3] = "#e0a52f", /* yellow  */
+//	[4] = "#9b78cc", /* blue    */
+//	[5] = "#ff79c6", /* magenta */
+//	[6] = "#3c7be8", /* cyan    */
+//	[7] = "#bbbbbb", /* white   */
+//
+//	/* 8 bright colors */
+//	[8]  = "#44475a", /* black   */
+//	[9]  = "#ff5555", /* red     */
+//	[10] = "#2f9148", /* green   */
+//	[11] = "#e0a52f", /* yellow  */
+//	[12] = "#9b78cc", /* blue    */
+//	[13] = "#ff79c6", /* magenta */
+//	[14] = "#3c7be8", /* cyan    */
+//	[15] = "#ffffff", /* white   */
+//
+//	/* special colors */
+//	[256] = "#000000", /* background */
+//	[257] = "#ffffff", /* foreground */
+
 };
 
 
@@ -151,10 +176,20 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, // reverse cursor
  */
+
+/* Normal theme! */
 unsigned int defaultfg = 257;
 unsigned int defaultbg = 256;
 static unsigned int defaultcs = 257;
 static unsigned int defaultrcs = 257;
+
+
+/* Winter theme! */
+//unsigned int defaultfg = 256;
+//unsigned int defaultbg = 257;
+//static unsigned int defaultcs = 256;
+//static unsigned int defaultrcs = 256;
+
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
  * will reverse too. Another logic would only make the simple feature too
@@ -182,7 +217,7 @@ static unsigned int rows = 24;
 /*
  * Default colour and shape of the mouse cursor
  */
-static unsigned int mouseshape = XC_xterm;
+static unsigned int mouseshape = XC_left_ptr;
 static unsigned int mousefg = 7;
 static unsigned int mousebg = 0;
 
@@ -220,8 +255,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ControlMask,	        XK_Up, 		kscrollup,      {.i = -1} },
+	{ ControlMask,	        XK_Down, 	kscrolldown,    {.i = -1} },
 };
 
 /*
